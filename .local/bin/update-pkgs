@@ -1,0 +1,16 @@
+echo
+read -p "yo u wanna update? (y/N) " update
+
+
+if [[ "$update" == "y" ]]; then
+	echo
+	echo "updating ur shyt"
+	echo
+	yay -Syu --noconfirm
+	echo
+	echo "   done !!"
+	sleep 2
+else
+	echo "alr"
+	echo
+fi

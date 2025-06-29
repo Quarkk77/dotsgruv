@@ -1,0 +1,140 @@
+{
+    "layer": "top",
+    "spacing": 0,
+    "height": 0,
+
+    "margin-top": 8,
+    "margin-right": 8,
+    "margin-bottom": 0,
+    "margin-left": 8,
+
+    "modules-left": [
+        "hyprland/window",
+        "mpris"
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+        "cpu_text",
+        "cpu",
+        "memory",
+        "battery",
+        "network",
+        "pulseaudio",
+        "custom/pacman",
+        "tray",
+        "clock",
+        "custom/power"
+    ],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "tooltip": false
+    },
+
+    "mpris": {
+        "format": "{player_icon}  {title}   {artist}",
+        "player-icons": {
+            "spotify": "",
+            "vlc": "",
+            "celluloid": "",
+            "mpv": "🎞 "
+        },
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "~/.config/waybar/scripts/player-next-throttled.sh",
+        "on-scroll-down": "~/.config/waybar/scripts/player-prev-throttled.sh",
+        "ignored-players": ["chromium", "firefox"]
+    },
+
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%I:%M %p - %a, %d %b %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+	"on-click": "gnome-calendar"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 90
+        }
+    },
+
+    "memory": {
+        "format": "  {percentage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 80
+        }
+    },
+
+    "battery": {
+        "format": "{icon}  {capacity}%",
+        "format-icons": [ "", "", "", "", "" ],
+        "format-charging": "{icon}  {capacity}% ",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi" : "{icon}  {bandwidthDownBits}",
+        "format-ethernet": "  {bandwidthDownBits}",
+        "format-disconnected" : "󰖪",
+        "interval": 5,
+        "tooltip": true,
+        "tooltip-format": " {ip}\n {ifname}",
+        "on-click": "nm-connection-editor",
+        "format-icons": {
+            "wifi": [
+                 "󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+            ]
+        }
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "max-volume": 150,
+        "format": "  {volume}%",
+        "format-bluetooth": "󰂯  {volume}%",
+        "nospacing": 1,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/pacman": {
+        "format": "{}",
+        "return-type": "json",
+        "interval": 180,                     // every hour
+        "exec": "/home/springaphex/.config/waybar/pacman-update-check.sh",       // # of updates
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "/home/springaphex/.local/scripts/sysupdate-handler.sh", // update system
+        "signal": 8,
+	"tooltip": false
+    },
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "/home/springaphex/.local/bin/powermenu.sh",
+        "tooltip-format": "Power"
+    },
+    "hyprland/window": {
+        "format": "{class}",
+        "icon": true,
+        "rewrite": {
+            "": "..."
+        }
+    }
+}

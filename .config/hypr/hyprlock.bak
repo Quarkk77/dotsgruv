@@ -1,0 +1,10 @@
+background {
+    monitor = *
+    color = rgba(0,0,0,0.6)
+}
+
+input-field {
+    monitor = *
+    position = 0, 0
+    size = 300, 80
+}

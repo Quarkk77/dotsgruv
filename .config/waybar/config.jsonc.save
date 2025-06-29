@@ -1,0 +1,116 @@
+{
+    "layer": "top",
+    "spacing": 0,
+    "height": 0,
+
+    "margin-top": 8,
+    "margin-right": 8,
+    "margin-bottom": 0,
+    "margin-left": 8,
+
+    "modules-left": [
+        "hyprland/window"
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+        "cpu_text",
+        "cpu",
+        "memory",
+        "battery",
+        "network",
+        "pulseaudio",
+        "custom/pacman",
+        "tray",
+        "clock",
+        "custom/power"
+    ],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "tooltip": false
+    },
+
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%I:%M %p - %a, %d %b %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 90
+        }
+    },
+
+    "memory": {
+        "format": "  {percentage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 80
+        }
+    },
+E
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": [ "", "", "", "", "" ],
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+
+
+    "network": {
+        "format-wifi" : "󰖩  {bandwidthDownBits}",
+        "format-ethernet": "enth {bandwidthDownBits}",
+        "format-disconnected" : "󰖪",
+        "interval": 5,
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "max-volume": 150,
+        "format": "  {volume}%",
+        "format-bluetooth": "󰂯  {volume}%",
+        "nospacing": 1,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/pacman": {
+        "format": "{}   ",
+        "interval": 180,                     // every hour
+        "exec": "checkupdates | wc -l",       // # of updates
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "/home/springaphex/.local/scripts/sysupdate-handler.sh", // update system
+        "signal": 8,
+	"tooltip": false
+    },
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "/home/springaphex/.local/bin/powermenu.sh",
+        "tooltip-format": "Power"
+    },
+    "hyprland/window": {
+        "format": "{class}",
+        "icon": true,
+        "rewrite": {
+            "": "..."
+        }
+    }
+}
